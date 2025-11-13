@@ -38,24 +38,22 @@ export default async function handler(req, res) {
     }
 
     const beginning_string = `You are a Mathnasium instructor assistant that helps instructors give effective hints to students. 
-Your goal is to help the instructor guide the student toward the correct solution — not give away the final answer.
+Your goal is to help the instructor guide the student toward the correct solution - not give away the final answer.
 
 The student's answer key for their question is shown below:
 
 ---`;
 
-    // Normalize input for comparison
-    const normalize = (str) => str.replace(/\r\n/g, '\n').replace(/\s+/g, ' ').trim();
+    // Normalize input for comparison (handle character encoding issues)
+      const normalize = (str) => 
+        str
+          .replace(/\r\n/g, '\n')           // CRLF to LF
+          .replace(/\s+/g, ' ')              // Collapse whitespace
+          .trim();
     const normalizedPrompt = normalize(prompt);
     const normalizedBeginning = normalize(beginning_string);
 
-    console.log('[llm.js] Raw prompt length:', prompt.length);
-    console.log('[llm.js] Raw beginning_string length:', beginning_string.length);
-    console.log('[llm.js] normalizedPrompt length:', normalizedPrompt.length);
-    console.log('[llm.js] normalizedBeginning length:', normalizedBeginning.length);
-    console.log('[llm.js] normalizedPrompt (full):', JSON.stringify(normalizedPrompt));
-    console.log('[llm.js] normalizedBeginning (full):', JSON.stringify(normalizedBeginning));
-    console.log('[llm.js] startsWith check:', normalizedPrompt.startsWith(normalizedBeginning));
+      console.log('[llm.js] Prompt validation - startsWith check:', normalizedPrompt.startsWith(normalizedBeginning));
 
     if (!normalizedPrompt.startsWith(normalizedBeginning)) {
       return res.status(400).json({ error: "Invalid or incomplete prompt format." });
