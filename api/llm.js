@@ -49,6 +49,10 @@ The student's answer key for their question is shown below:
     const normalizedPrompt = normalize(prompt);
     const normalizedBeginning = normalize(beginning_string);
 
+    console.log('[llm.js] normalizedPrompt:', JSON.stringify(normalizedPrompt.substring(0, 150)));
+    console.log('[llm.js] normalizedBeginning:', JSON.stringify(normalizedBeginning));
+    console.log('[llm.js] startsWith check:', normalizedPrompt.startsWith(normalizedBeginning));
+
     if (!normalizedPrompt.startsWith(normalizedBeginning)) {
       return res.status(400).json({ error: "Invalid or incomplete prompt format." });
     }
