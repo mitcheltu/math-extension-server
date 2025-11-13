@@ -1,6 +1,8 @@
 
 import { OpenRouter } from '@openrouter/sdk';
 
+console.log("llm.js loaded at " + new Date().toISOString());
+
 // Initialize OpenRouter client once
 const openRouter = new OpenRouter({
   apiKey: process.env.API_KEY,
