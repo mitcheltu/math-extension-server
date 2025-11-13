@@ -49,8 +49,12 @@ The student's answer key for their question is shown below:
     const normalizedPrompt = normalize(prompt);
     const normalizedBeginning = normalize(beginning_string);
 
-    console.log('[llm.js] normalizedPrompt:', JSON.stringify(normalizedPrompt.substring(0, 150)));
-    console.log('[llm.js] normalizedBeginning:', JSON.stringify(normalizedBeginning));
+    console.log('[llm.js] Raw prompt length:', prompt.length);
+    console.log('[llm.js] Raw beginning_string length:', beginning_string.length);
+    console.log('[llm.js] normalizedPrompt length:', normalizedPrompt.length);
+    console.log('[llm.js] normalizedBeginning length:', normalizedBeginning.length);
+    console.log('[llm.js] normalizedPrompt (full):', JSON.stringify(normalizedPrompt));
+    console.log('[llm.js] normalizedBeginning (full):', JSON.stringify(normalizedBeginning));
     console.log('[llm.js] startsWith check:', normalizedPrompt.startsWith(normalizedBeginning));
 
     if (!normalizedPrompt.startsWith(normalizedBeginning)) {
