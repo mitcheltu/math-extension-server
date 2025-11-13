@@ -1,35 +1,16 @@
 {
-    "name": "llm-gateway",
-    "version": "0.1.0",
-    "description": "LLM gateway (ES module)",
-    "type": "module",
-    "private": true,
-    "main": "./dist/index.js",
-    "exports": {
-        ".": {
-            "import": "./src/index.js",
-            "require": "./dist/index.cjs.js"
-        },
-        "./package.json": "./package.json"
-    },
-    "files": [
-        "dist/",
-        "src/"
-    ],
-    "scripts": {
-        "start": "node ./src/index.js",
-        "dev": "node --watch ./src/index.js ./src/index.js",
-        "build": "echo \"No build step configured\"",
-        "test": "echo \"No tests configured\"",
-        "lint": "eslint . --ext .js,.mjs"
-    },
-    "engines": {
-        "node": ">=16"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "MIT",
-    "dependencies": {
-        "@openrouter/sdk": "^0.1.4"
-    }
+  "name": "llm-gateway",
+  "version": "1.0.0",
+  "description": "LLM Gateway for Chrome Extension using Vercel Serverless Functions",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  },
+  "engines": {
+    "node": ">=18.x"
+  },
+  "dependencies": {
+    "@openrouter/sdk": "^0.1.11"
+  }
 }
